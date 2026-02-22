@@ -47,7 +47,7 @@ preco_ryzen = pegar_preco(XPATH_PRECO, URL_INTEL)
 
 enviar_msg(f"i5 12400F: R$ {preco_i5}", CHAT_ID_PERSON)
 enviar_msg(f"Ryzen 5 5500: R$ {preco_ryzen}", CHAT_ID_PERSON)
-if preco <= PRECO_ALERTA:
+if preco < PRECO_ALERTA:
     enviar_msg(f"🔥 RX 7600 caiu! Está R$ {preco}", CHAT_ID)
 else:
     enviar_msg(f"Preço atual: R$ {preco}", CHAT_ID)
