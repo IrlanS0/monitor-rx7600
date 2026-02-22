@@ -41,8 +41,8 @@ def pegar_preco(string, url):
 
 XPATH_PRECO = "//div[@id='main-content']//h4[contains(text(),'R$')]"
 preco = pegar_preco(XPATH_PRECO, URL)
-preco_i5 = pegar_preco(XPATH_PRECO, URL_RYZEN)
-preco_ryzen = pegar_preco(XPATH_PRECO, URL_INTEL)
+preco_i5 = pegar_preco(XPATH_PRECO, URL_INTEL)
+preco_ryzen = pegar_preco(XPATH_PRECO, URL_RYZEN)
 
 
 enviar_msg(f"i5 12400F: R$ {preco_i5}", CHAT_ID_PERSON)
