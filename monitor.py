@@ -37,7 +37,7 @@ def pegar_preco():
 
 preco = pegar_preco()
 
-if preco <= PRECO_ALERTA:
+if preco < PRECO_ALERTA:
     enviar_msg(f"🔥 RX 7600 caiu! Está R$ {preco}")
 else:
     enviar_msg(f"Preço atual: R$ {preco}")
