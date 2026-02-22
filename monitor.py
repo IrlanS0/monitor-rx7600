@@ -1,17 +1,17 @@
 import time
 import requests
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
-TOKEN = "SEU_TOKEN"
-CHAT_ID = "SEU_CHAT_ID"
-URL = "LINK_DO_SITE"
-PRECO_ALERTA = 1600
-
+TOKEN = os.environ["TELEGRAM_TOKEN"]
+CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+URL = "https://www.kabum.com.br/produto/463543/placa-de-video-rx-7600-series-graphics-cards-xfx-amd-radeon-8gb-gddr6-rx-76pqickby"
+PRECO_ALERTA = 1599.99
 
 def enviar_msg(mensagem):
-    url = f"https//api.telegram.org/bot{TOKEN}/sendMessage"
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     requests.post(url, data={
         "chat_id": CHAT_ID,
         "text": mensagem
@@ -23,11 +23,11 @@ def pegar_preco():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver
+    driver = webdriver.Chrome(options=options)
     driver.get(URL)
     time.sleep(5)
 
-    preco_elemento = driver.find_element(By.TAG_NAME, "h4")
+    preco_elemento = driver.find_element(By.XPATH, "//div[@id='main-content']//h4[contains(text(),'R$')]")
     texto = preco_elemento.text
 
     driver.quit()

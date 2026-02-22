@@ -27,5 +27,8 @@ jobs:
         sudo apt install -y chromium-browser
 
     - name: Run script
+      env: 
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}s
       run: |
         python monitor.py
